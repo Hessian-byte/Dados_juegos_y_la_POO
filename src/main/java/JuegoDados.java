@@ -22,7 +22,7 @@ public class JuegoDados {
     }
     public void menu(){
 
-        System.out.println("Bienvenido al juego de dados\n(1)Jugar\n(2)Reglas\n(3)Salir");
+        System.out.println("///////////////////////////\nBienvenido al juego de dados\n///////////////////////////\nEscriba el número de una de las siguientes opciones:\n(1)Jugar\n(2)Reglas\n(3)Salir");
         String opcion;
         opcion = teclado.nextLine();
 
@@ -31,6 +31,8 @@ public class JuegoDados {
                 Jugar();
                 break;
             case "2":
+                System.out.println("//////////////////////////////////////");
+                System.out.println("Reglas:");
                 System.out.println("Despues de dos lanzamientos de dados");
                 System.out.println("ganarás si los números de estos suman");
                 System.out.println("7 o más.");
@@ -54,7 +56,10 @@ public class JuegoDados {
         int segundo_valor = dado.lanzar();
         System.out.println("Primer lanzamiento: "+"| "+primer_valor+" |");
         System.out.println("Segundo lanzamiento: "+"| "+segundo_valor+" |");
-        if(primer_valor+segundo_valor>=7){
+        return evaluarResultado(primer_valor,segundo_valor);
+    }
+    public String evaluarResultado(int valor_a,int valor_b){
+        if(valor_a+valor_b>=7){
             return "Has ganado la partida";
         }else{
             return "Has perdido la partida";

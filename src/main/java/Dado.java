@@ -15,7 +15,7 @@ public class Dado {
     }
 
     public int lanzar() { // Este método retornará un valor al azar de una de las caras del dado
-        return valores_caras[rnum.nextInt(valores_caras.length-1)];
+        return valores_caras[rnum.nextInt(valores_caras.length)];
     }
 
     public void cambiarColor(String color) {
