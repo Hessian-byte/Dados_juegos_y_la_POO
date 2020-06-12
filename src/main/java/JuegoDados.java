@@ -1,2 +1,80 @@
+import java.util.Scanner;
+
+import static java.lang.System.exit;
+
+
 public class JuegoDados {
+
+    public static Scanner teclado = new Scanner(System.in);
+    Dado dado;
+
+    public JuegoDados() {
+        int[] valores = new int[]{1,2,3,4,5,6};
+        dado = new Dado("Azul", valores,"Plastico");
+    }
+
+    public JuegoDados(String color, int[] valores_caras, String material) {
+        Dado dado = new Dado(color, valores_caras,material);
+
+
+    }
+    public void menu(){
+
+        System.out.println("Bienvenido al juego de dados\n(1)Jugar\n(2)Reglas\n(3)Salir");
+        String opcion;
+        opcion = teclado.nextLine();
+
+        switch(opcion){
+            case "1":
+
+                break;
+            case "2":
+                System.out.println("Despues de dos lanzamientos de dados");
+                System.out.println("ganarás si los números de estos suman");
+                System.out.println("7 o más.");
+
+                menu();
+                break;
+            case "3":
+                exit(0);
+                break;
+            default:
+            System.out.println("Ha ingresado una entrada no válida, por favor inténtelo de nuevo");
+            menu();
+        }
+    }
+    public void Jugar(Dado dado){
+        int primer_valor = dado.lanzar();
+        int segundo_valor = dado.lanzar();
+
+        if(primer_valor+segundo_valor>=7){
+            System.out.println("Has ganado la partida");
+        }else{
+            System.out.println("Has perdido la partida");
+        }
+        repetirJuego();
+    }
+    public void repetirJuego(){
+        String opcion;
+
+        System.out.println("¿Desea jugar de nuevo?");
+        System.out.println("Escriba si o no en el terminal");
+        opcion = teclado.nextLine();
+
+        switch (opcion){
+            case "si":
+                Jugar(dado);
+                break;
+            case "no":
+                menu();
+                break;
+            default:
+                System.out.println("Respuesta no válida, escriba si o no en el terminal");
+                repetirJuego();
+        }
+    }
+    public String toString(Object mensaje){
+        return String.valueOf(mensaje);
+    }
+
 }
