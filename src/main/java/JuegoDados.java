@@ -17,7 +17,7 @@ public class JuegoDados {
 
     public void menu(){
 
-        System.out.println("///////////////////////////\nBienvenido al juego de dados\n///////////////////////////\nEscriba el número de una de las siguientes opciones:\n(1)Jugar\n(2)Reglas\n(3)Cambiar color del dado\n(4)Cambiar material del dado\n(5)Salir");
+        System.out.println(Dado.ANSI_GREEN+"//////////////////////////////////////"+Dado.ANSI_RESET+"\nBienvenido al juego de dados"+Dado.ANSI_GREEN+"\n//////////////////////////////////////"+Dado.ANSI_RESET+"\nColor de los dados: "+dado.getColor()+"  1  "+Dado.ANSI_RESET+"\nMaterial de los dados: "+dado.getMaterial()+"|   |"+Dado.ANSI_RESET+"\nEscriba el número de una de las siguientes opciones:\n(1)Jugar\n(2)Reglas\n(3)Cambiar color del dado\n(4)Cambiar material del dado\n(5)Salir");
         String opcion;
         opcion = teclado.nextLine();
 
@@ -26,7 +26,7 @@ public class JuegoDados {
                 Jugar();
                 break;
             case "2":
-                System.out.println("//////////////////////////////////////");
+                System.out.println(Dado.ANSI_GREEN+"//////////////////////////////////////"+Dado.ANSI_RESET);
                 System.out.println("Reglas:");
                 System.out.println("Despues de dos lanzamientos de dados");
                 System.out.println("ganarás si los números de estos suman");
@@ -87,7 +87,7 @@ public class JuegoDados {
         }
     }
     public void menu_cambiarColor(){
-        System.out.println("Los colores disponibles actualmente para el dado son:\n(1)Rojo\n(2)Negro");
+        System.out.println("Los colores disponibles actualmente para el dado son:\n(1)Rojo\n(2)Negro\n(3)Amarillo\n(4)Azul");
         String opcion;
         opcion = teclado.nextLine();
         switch(opcion){
@@ -99,13 +99,25 @@ public class JuegoDados {
                 dado.cambiarColor(Dado.ANSI_BLACK);
                 menu();
                 break;
+            case "3":
+                dado.cambiarColor(Dado.ANSI_YELLOW);
+                menu();
+                break;
+            case "4":
+                dado.cambiarColor(Dado.ANSI_BLUE);
+                menu();
+                break;
+            case "5":
+                dado.cambiarColor(Dado.ANSI_GREEN);
+                menu();
+                break;
             default:
                 System.out.println("Respuesta no válida");
                 menu_cambiarColor();
         }
     }
     public void menu_cambiarMaterial(){
-        System.out.println("Los colores disponibles actualmente para el material son:\n(1)Rojo\n(2)Negro");
+        System.out.println("Los colores disponibles actualmente para el material son:\n(1)Rojo\n(2)Negro\n(3)Amarillo\n(4)Azul");
         String opcion;
         opcion = teclado.nextLine();
         switch(opcion){
@@ -115,6 +127,18 @@ public class JuegoDados {
                 break;
             case "2":
                 dado.cambiarMaterial(Dado.ANSI_BLACK);
+                menu();
+                break;
+            case "3":
+                dado.cambiarMaterial(Dado.ANSI_YELLOW);
+                menu();
+                break;
+            case "4":
+                dado.cambiarMaterial(Dado.ANSI_BLUE);
+                menu();
+                break;
+            case "5":
+                dado.cambiarMaterial(Dado.ANSI_GREEN);
                 menu();
                 break;
             default:
