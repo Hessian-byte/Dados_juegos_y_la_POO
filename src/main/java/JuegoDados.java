@@ -8,9 +8,11 @@ public class JuegoDados {
     public static Scanner teclado = new Scanner(System.in);
     Dado dado;
 
+
     public JuegoDados() {
         int[] valores = new int[]{1,2,3,4,5,6};
         dado = new Dado("Azul", valores,"Plastico");
+
     }
 
     public JuegoDados(String color, int[] valores_caras, String material) {
@@ -26,7 +28,7 @@ public class JuegoDados {
 
         switch(opcion){
             case "1":
-
+                Jugar();
                 break;
             case "2":
                 System.out.println("Despues de dos lanzamientos de dados");
@@ -43,16 +45,20 @@ public class JuegoDados {
             menu();
         }
     }
-    public void Jugar(Dado dado){
+    public void Jugar(){
+        System.out.println(calcularResultado());
+        repetirJuego();
+    }
+    public String calcularResultado(){
         int primer_valor = dado.lanzar();
         int segundo_valor = dado.lanzar();
-
+        System.out.println("Primer lanzamiento: "+"| "+primer_valor+" |");
+        System.out.println("Segundo lanzamiento: "+"| "+segundo_valor+" |");
         if(primer_valor+segundo_valor>=7){
-            System.out.println("Has ganado la partida");
+            return "Has ganado la partida";
         }else{
-            System.out.println("Has perdido la partida");
+            return "Has perdido la partida";
         }
-        repetirJuego();
     }
     public void repetirJuego(){
         String opcion;
@@ -63,7 +69,7 @@ public class JuegoDados {
 
         switch (opcion){
             case "si":
-                Jugar(dado);
+                Jugar();
                 break;
             case "no":
                 menu();
@@ -72,9 +78,6 @@ public class JuegoDados {
                 System.out.println("Respuesta no válida, escriba si o no en el terminal");
                 repetirJuego();
         }
-    }
-    public String toString(Object mensaje){
-        return String.valueOf(mensaje);
     }
 
 }

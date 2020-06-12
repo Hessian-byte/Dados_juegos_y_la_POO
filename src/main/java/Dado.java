@@ -1,3 +1,4 @@
+
 import java.util.Random;
 
 public class Dado {
@@ -5,7 +6,7 @@ public class Dado {
     private int[] valores_caras;
     private String material;
 
-    Random rnum = new Random();
+    private Random rnum = new Random();
 
     public Dado(String color, int[] valores_caras, String material) { // Este método crea el objeto dado a partir de
         this.color = color;
@@ -14,13 +15,21 @@ public class Dado {
     }
 
     public int lanzar() { // Este método retornará un valor al azar de una de las caras del dado
-        int numero;
-        numero = valores_caras[rnum.nextInt(5)];
-        return numero;
+        return valores_caras[rnum.nextInt(valores_caras.length-1)];
     }
 
     public void cambiarColor(String color) {
         this.color = color;
     }
 
+    public int[] getValores_caras() {
+        return valores_caras;
+    }
+    public boolean comprobarLanzamiento(int lanzamiento){
+        if(valores_caras[0]==lanzamiento ||valores_caras[1]==lanzamiento ||valores_caras[2]==lanzamiento ||valores_caras[3]==lanzamiento ||valores_caras[4]==lanzamiento ||valores_caras[5]==lanzamiento){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
