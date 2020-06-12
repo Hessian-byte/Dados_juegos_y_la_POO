@@ -2,6 +2,11 @@
 import java.util.Random;
 
 public class Dado {
+    public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_RESET = "\u001B[0m";
+
     private String color;
     private int[] valores_caras;
     private String material;
@@ -21,6 +26,9 @@ public class Dado {
     public void cambiarColor(String color) {
         this.color = color;
     }
+    public void cambiarMaterial(String material) {
+        this.material = material;
+    }
 
     public int[] getValores_caras() {
         return valores_caras;
@@ -31,5 +39,13 @@ public class Dado {
         }else{
             return false;
         }
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public String getMaterial() {
+        return material;
     }
 }

@@ -11,18 +11,13 @@ public class JuegoDados {
 
     public JuegoDados() {
         int[] valores = new int[]{1,2,3,4,5,6};
-        dado = new Dado("Azul", valores,"Plastico");
+        dado = new Dado(Dado.ANSI_BLACK, valores,Dado.ANSI_BLACK);
 
     }
 
-    public JuegoDados(String color, int[] valores_caras, String material) {
-        Dado dado = new Dado(color, valores_caras,material);
-
-
-    }
     public void menu(){
 
-        System.out.println("///////////////////////////\nBienvenido al juego de dados\n///////////////////////////\nEscriba el número de una de las siguientes opciones:\n(1)Jugar\n(2)Reglas\n(3)Salir");
+        System.out.println("///////////////////////////\nBienvenido al juego de dados\n///////////////////////////\nEscriba el número de una de las siguientes opciones:\n(1)Jugar\n(2)Reglas\n(3)Cambiar color del dado\n(4)Cambiar material del dado\n(5)Salir");
         String opcion;
         opcion = teclado.nextLine();
 
@@ -40,8 +35,15 @@ public class JuegoDados {
                 menu();
                 break;
             case "3":
+                menu_cambiarColor();
+                break;
+            case "4":
+                menu_cambiarMaterial();
+                break;
+            case "5":
                 exit(0);
                 break;
+
             default:
             System.out.println("Ha ingresado una entrada no válida, por favor inténtelo de nuevo");
             menu();
@@ -54,8 +56,8 @@ public class JuegoDados {
     public String calcularResultado(){
         int primer_valor = dado.lanzar();
         int segundo_valor = dado.lanzar();
-        System.out.println("Primer lanzamiento: "+"| "+primer_valor+" |");
-        System.out.println("Segundo lanzamiento: "+"| "+segundo_valor+" |");
+        System.out.println("Primer lanzamiento: "+dado.getMaterial()+"| "+Dado.ANSI_RESET+dado.getColor()+primer_valor+Dado.ANSI_RESET+dado.getMaterial()+" |"+Dado.ANSI_RESET);
+        System.out.println("Segundo lanzamiento: "+dado.getMaterial()+"| "+Dado.ANSI_RESET+dado.getColor()+segundo_valor+Dado.ANSI_RESET+dado.getMaterial()+" |"+Dado.ANSI_RESET);
         return evaluarResultado(primer_valor,segundo_valor);
     }
     public String evaluarResultado(int valor_a,int valor_b){
@@ -84,5 +86,40 @@ public class JuegoDados {
                 repetirJuego();
         }
     }
-
+    public void menu_cambiarColor(){
+        System.out.println("Los colores disponibles actualmente para el dado son:\n(1)Rojo\n(2)Negro");
+        String opcion;
+        opcion = teclado.nextLine();
+        switch(opcion){
+            case "1":
+                dado.cambiarColor(Dado.ANSI_RED);
+                menu();
+                break;
+            case "2":
+                dado.cambiarColor(Dado.ANSI_BLACK);
+                menu();
+                break;
+            default:
+                System.out.println("Respuesta no válida");
+                menu_cambiarColor();
+        }
+    }
+    public void menu_cambiarMaterial(){
+        System.out.println("Los colores disponibles actualmente para el material son:\n(1)Rojo\n(2)Negro");
+        String opcion;
+        opcion = teclado.nextLine();
+        switch(opcion){
+            case "1":
+                dado.cambiarMaterial(Dado.ANSI_RED);
+                menu();
+                break;
+            case "2":
+                dado.cambiarMaterial(Dado.ANSI_BLACK);
+                menu();
+                break;
+            default:
+                System.out.println("Respuesta no válida");
+                menu_cambiarMaterial();
+        }
+    }
 }
