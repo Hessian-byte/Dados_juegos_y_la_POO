@@ -23,4 +23,8 @@ class DadoTest {
     void ComprobarLanzamiento_test02() {
         assertEquals(false,dado.comprobarLanzamiento(-59));
     }
+    @org.junit.jupiter.api.Test
+    void ComprobarLanzamiento_test03() {
+        assertEquals(false,dado.comprobarLanzamiento(-59));
+    }
 }

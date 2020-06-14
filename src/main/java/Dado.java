@@ -15,7 +15,7 @@ public class Dado {
 
     private Random rnum = new Random();
 
-    public Dado(String color, int[] valores_caras, String material) { // Este método crea el objeto dado a partir de
+    public Dado(String color, int[] valores_caras, String material) { // Este método crea el objeto dado a partir de los parámetros de entrada
         this.color = color;
         this.valores_caras = valores_caras;
         this.material = material;
@@ -24,29 +24,25 @@ public class Dado {
     public int lanzar() { // Este método retornará un valor al azar de una de las caras del dado
         return valores_caras[rnum.nextInt(valores_caras.length)];
     }
-
     public void cambiarColor(String color) {
         this.color = color;
     }
     public void cambiarMaterial(String material) {
         this.material = material;
     }
-
     public int[] getValores_caras() {
         return valores_caras;
     }
-    public boolean comprobarLanzamiento(int lanzamiento){
+    public boolean comprobarLanzamiento(int lanzamiento){ // Verifica que el resultado del lanzamiento pertenezca a alguna de las caras del mismo
         if(valores_caras[0]==lanzamiento ||valores_caras[1]==lanzamiento ||valores_caras[2]==lanzamiento ||valores_caras[3]==lanzamiento ||valores_caras[4]==lanzamiento ||valores_caras[5]==lanzamiento){
             return true;
         }else{
             return false;
         }
     }
-
     public String getColor() {
         return color;
     }
-
     public String getMaterial() {
         return material;
     }
